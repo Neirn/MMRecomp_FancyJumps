@@ -8,14 +8,14 @@
 id = "mm_recomp_fancy_jumps"
 
 # Version of this mod.
-version = "0.0.1"
+version = "0.1.0"
 
 # The name that will show up for this mod in the mod menu. This should be human readable.
 display_name = "Fancy Jumps"
 
 # The description that will show up when this mod is displayed in the mod menu. This should be human readable.
 description =  """
-This is a mod for Major's Mask recompiled that allows Link's extra jumping animations to be used more frequently.
+This is a mod for Majora's Mask: Recompiled that allows Link's extra jumping animations to be used more frequently.
 
 For more details, see https://github.com/Neirn/MMRecomp_FancyJumps"""
 
