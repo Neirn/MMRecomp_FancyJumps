@@ -1,0 +1,8 @@
+{
+    "name": "Fancy_Jumps",
+    "version_number": "0.1.0",
+    "website_url": "https://github.com/Neirn/MMRecomp_FancyJumps",
+    "description": "Make Link's special jumps play more often.",
+    "dependencies": [
+    ]
+}
