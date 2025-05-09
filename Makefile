@@ -9,8 +9,8 @@ else ifneq ($(shell uname),Darwin)
     CC      := clang
     LD      := ld.lld
 else
-    CC      ?= clang
-    LD      ?= ld.lld
+    CC      := clang
+    LD      := ld.lld
 endif
 
 TARGET  := $(BUILD_DIR)/mod.elf
