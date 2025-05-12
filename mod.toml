@@ -68,7 +68,9 @@ Vanilla: Use default game behavior
 
 Cycle: Cycle jump animation in the order Normal -> Roll -> Somersault
 
-Random: Choose a jumping animation at random"""
+Random: Choose a jumping animation at random
+
+Disabled: Disable fancy jumping entirely"""
 type = "Enum"
-options = [ "Vanilla", "Cycle", "Random" ]
+options = [ "Vanilla", "Cycle", "Random", "Disabled" ]
 default = "Cycle"
