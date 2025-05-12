@@ -72,3 +72,14 @@ Random: Choose a jumping animation at random"""
 type = "Enum"
 options = [ "Vanilla", "Cycle", "Random" ]
 default = "Cycle"
+
+[[manifest.config_options]]
+id = "allow_roll_after_fancy_jump"
+name = "Allow Roll"
+description = """\
+On: Allow Link to roll out of a roll jump or side flip.
+
+Off: Link can only roll out of his normal jump. (Vanilla behavior)"""
+type = "Enum"
+options = [ "On", "Off" ]
+default = "Off"
