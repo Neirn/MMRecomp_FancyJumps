@@ -62,20 +62,17 @@ void replaceFloorProperty(PlayState *play, Player *this, u16 sfxId) {
         return;
     }
 
-    if ((this->transformation != PLAYER_FORM_DEKU))
-    {
+    if ((this->transformation != PLAYER_FORM_DEKU)) {
         u8 selectedJump = getNextJump();
 
-        switch (sPrevFloorProperty)
-        {
+        switch (sPrevFloorProperty) {
         case FLOOR_PROPERTY_1:
         case FLOOR_PROPERTY_2:
             // do nothing
             break;
 
         default:
-            switch (selectedJump)
-            {
+            switch (selectedJump) {
             case 1:
                 sPrevFloorProperty = FLOOR_PROPERTY_1;
                 break;
@@ -93,8 +90,7 @@ void replaceFloorProperty(PlayState *play, Player *this, u16 sfxId) {
 }
 
 RECOMP_HOOK_RETURN("func_808373F8")
-void restoreFloorProperty()
-{
+void restoreFloorProperty() {
     sPrevFloorProperty = realPrevFloorProperty;
 }
 
