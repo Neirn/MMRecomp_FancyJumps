@@ -1,8 +1,8 @@
 {
     "name": "Fancy_Jumps",
-    "version_number": "0.1.1",
+    "version_number": "0.2.0",
     "website_url": "https://github.com/Neirn/MMRecomp_FancyJumps",
-    "description": "Make Link's special jumps play more often.",
+    "description": "Change the frequency of Link's special jumping animations.",
     "dependencies": [
     ]
 }
