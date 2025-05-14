@@ -8,7 +8,8 @@ typedef enum
 {
     MOD_OPT_VANILLA,
     MOD_OPT_CYCLE,
-    MOD_OPT_RANDOM
+    MOD_OPT_RANDOM,
+    MOD_OPT_DISABLED
 } FancyJumpsSelectOption;
 
 extern FloorProperty sPrevFloorProperty;
@@ -43,6 +44,13 @@ RECOMP_HOOK("func_808373F8")
 void replaceFloorProperty(PlayState *play, Player *this, u16 sfxId)
 {
     realPrevFloorProperty = sPrevFloorProperty;
+
+    FancyJumpsSelectOption selectionMethod = recomp_get_config_u32("jump_selection_method");
+
+    if (selectionMethod == MOD_OPT_DISABLED) {
+        sPrevFloorProperty = FLOOR_PROPERTY_0;
+        return;
+    }
 
     if ((this->transformation != PLAYER_FORM_DEKU))
     {
