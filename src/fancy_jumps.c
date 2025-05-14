@@ -4,8 +4,9 @@
 #include "recompconfig.h"
 #include "rand.h"
 #include "z64animation.h"
-extern LinkAnimationHeader gPlayerAnim_link_normal_newroll_jump_20f;
 
+extern FloorProperty sPrevFloorProperty;
+extern LinkAnimationHeader gPlayerAnim_link_normal_newroll_jump_20f;
 extern LinkAnimationHeader gPlayerAnim_link_normal_newside_jump_20f;
 
 typedef enum {
@@ -19,8 +20,6 @@ typedef enum {
     MOD_OPT_ALWAYS_ALLOW_ROLL,
     MOD_OPT_VANILLA_ALLOW_ROLL
 } FancyJumpsAllowRollOption;
-
-extern FloorProperty sPrevFloorProperty;
 
 u8 currentJump = 0;
 
