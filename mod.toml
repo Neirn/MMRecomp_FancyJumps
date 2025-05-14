@@ -66,7 +66,7 @@ name = "Jump Selection Method"
 description = """\
 Vanilla: Use default game behavior
 
-Cycle: Cycle jump animation in the order Normal -> Roll -> Somersault
+Cycle: Cycle jump animation in the order Normal -> Roll -> Side Flip
 
 Random: Choose a jumping animation at random
 
