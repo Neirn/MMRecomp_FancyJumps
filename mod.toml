@@ -15,13 +15,19 @@ display_name = "Fancy Jumps"
 
 # The description that will show up when this mod is displayed in the mod menu. This should be human readable.
 description =  """
-This is a mod for Majora's Mask: Recompiled that allows Link's extra jumping animations to be used more frequently.
+This is a mod for Majora's Mask: Recompiled that changes the behavior of Link's special jumping animations.
+
+They can be made to play more frequently by either being cycled between or by playing randomly.
+
+They can also be disabled entirely, including the vanilla locations where they appear.
+
+As a small quality of life feature, you can enable rolling upon landing to mitigate damage during these special jumps. This is OFF by default, which matches vanilla behavior.
 
 For more details, see https://github.com/Neirn/MMRecomp_FancyJumps"""
 
 # A short description that will show up in this mod's entry in the mod list. This should be human readable and kept short
 # to prevent it from being cut off due to the limited space.
-short_description = "Use Link's extra jumping animations in more places."
+short_description = "Change the behavior of Link's special jumping animations."
 
 # Authors of this mod.
 authors = [ "Neirn" ]
