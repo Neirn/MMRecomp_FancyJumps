@@ -105,7 +105,7 @@ void onJumpEnd(PlayState *play, Player *this) {
     if (recomp_get_config_u32("allow_roll_after_fancy_jump") == MOD_OPT_ALWAYS_ALLOW_ROLL) {
         if (this->transformation != PLAYER_FORM_DEKU) {
             LinkAnimationHeader *animation = this->skelAnime.animation;
-            if (animation == &gPlayerAnim_link_normal_newside_jump_20f || animation == &gPlayerAnim_link_normal_newside_jump_20f) {
+            if (animation == &gPlayerAnim_link_normal_newside_jump_20f || animation == &gPlayerAnim_link_normal_newroll_jump_20f) {
                 if (shouldRollAfterJump(this)) {
                     player->stateFlags2 &= ~PLAYER_STATE2_80000;
                 }
