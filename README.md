@@ -1,4 +1,4 @@
-# Majora's Mask: Recompiled Mod Template
+# Fancy Jumps for Majora's Mask: Recompiled
 
 ![Slide Hopping](https://files.catbox.moe/8g3a9m.gif)  
 ![Cancel into Jump Slash](https://files.catbox.moe/psruii.gif)
