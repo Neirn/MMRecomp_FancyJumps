@@ -21,6 +21,11 @@ typedef enum {
     MOD_OPT_UNRESTRICT,
 } FancyJumpsUnrestrictOption;
 
+typedef enum {
+    MOD_OPT_ON_WHILE_CARRYING,
+    MOD_OPT_OFF_WHILE_CARRYING_ACTOR,
+} FancyJumpsDisableWhileCarryOption;
+
 u8 currentJump = 0;
 
 FloorProperty realPrevFloorProperty = FLOOR_PROPERTY_0;
@@ -51,6 +56,11 @@ u8 getNextJump() {
     return result;
 }
 
+bool isFancyDisabledByCarry(Player *p) {
+    return (player->stateFlags1 & PLAYER_STATE1_CARRYING_ACTOR) &&
+           (recomp_get_config_u32("disable_on_carry_actor") == MOD_OPT_OFF_WHILE_CARRYING_ACTOR);
+}
+
 RECOMP_HOOK("func_808373F8")
 void pre_OnStartJump(PlayState *play, Player *this, u16 sfxId) {
     player = this;
@@ -58,12 +68,15 @@ void pre_OnStartJump(PlayState *play, Player *this, u16 sfxId) {
     realPrevFloorProperty = sPrevFloorProperty;
     selectionMethod = recomp_get_config_u32("jump_selection_method");
 
-    if (selectionMethod == MOD_OPT_DISABLED) {
-        sPrevFloorProperty = FLOOR_PROPERTY_0;
+    if (selectionMethod == MOD_OPT_DISABLED || isFancyDisabledByCarry(player)) {
+        if (sPrevFloorProperty == FLOOR_PROPERTY_1 || sPrevFloorProperty == FLOOR_PROPERTY_2) {
+            sPrevFloorProperty = FLOOR_PROPERTY_0;
+        }
+
         return;
     }
 
-    if ((this->transformation != PLAYER_FORM_DEKU)) {
+    if (this->transformation != PLAYER_FORM_DEKU) {
         u8 selectedJump = getNextJump();
 
         switch (sPrevFloorProperty) {

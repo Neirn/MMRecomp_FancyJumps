@@ -23,6 +23,8 @@ They can also be disabled entirely, including the vanilla locations where they a
 
 You can also enable normal jump functionality during fancy jumps, allowing Link to jump slash, roll on landing, etc. out of these special jumps.
 
+By default, doing a fancy jump while holding an item over Link's head looks strange. He can be forced to always do his normal jump whily carrying something with this mod.
+
 For more details, see https://github.com/Neirn/MMRecomp_FancyJumps"""
 
 # A short description that will show up in this mod's entry in the mod list. This should be human readable and kept short
@@ -86,6 +88,17 @@ id = "unrestrict_fancy"
 name = "Unrestrict Actions"
 description = """\
 On: Link can roll, jumpslash, etc. during a fancy jump
+
+Off: Vanilla behavior"""
+type = "Enum"
+options = [ "Off", "On" ]
+default = "Off"
+
+[[manifest.config_options]]
+id = "disable_on_carry_actor"
+name = "Item Carry Fix"
+description = """\
+On: Link will always do a normal jump while carrying something over his head
 
 Off: Vanilla behavior"""
 type = "Enum"
