@@ -91,8 +91,8 @@ void pre_OnStartJump(PlayState *play, Player *this, u16 sfxId) {
 }
 
 bool isDoingFancyJump(Player *p) {
-    p->skelAnime.animation == &gPlayerAnim_link_normal_newside_jump_20f ||
-    p->skelAnime.animation == &gPlayerAnim_link_normal_newroll_jump_20f;
+    return p->skelAnime.animation == &gPlayerAnim_link_normal_newside_jump_20f ||
+           p->skelAnime.animation == &gPlayerAnim_link_normal_newroll_jump_20f;
 }
 
 RECOMP_HOOK_RETURN("func_808373F8")
