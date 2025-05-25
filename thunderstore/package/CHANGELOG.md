@@ -1,3 +1,7 @@
+### 0.3.1
+* Fix Thunderstore package (again)
+* Mod code unchanged
+
 ### 0.3.0
 * Replace roll out of fancy jump option with more general option that also allows things like rolling out of a jump slash
 * Add option to disable fancy jumps while carrying something over Link's head

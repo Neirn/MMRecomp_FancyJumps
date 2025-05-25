@@ -1,6 +1,6 @@
 {
     "name": "Fancy_Jumps",
-    "version_number": "0.3.0",
+    "version_number": "0.3.1",
     "website_url": "https://github.com/Neirn/MMRecomp_FancyJumps",
     "description": "Change the frequency of Link's special jumping animations.",
     "dependencies": [
