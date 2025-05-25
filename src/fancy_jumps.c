@@ -13,21 +13,27 @@ typedef enum {
     MOD_OPT_VANILLA,
     MOD_OPT_CYCLE,
     MOD_OPT_RANDOM,
-    MOD_OPT_DISABLED
+    MOD_OPT_DISABLED,
 } FancyJumpsSelectOption;
 
 typedef enum {
-    MOD_OPT_ALWAYS_ALLOW_ROLL,
-    MOD_OPT_VANILLA_ALLOW_ROLL
-} FancyJumpsAllowRollOption;
+    MOD_OPT_VANILLA_RESTRICT,
+    MOD_OPT_UNRESTRICT,
+} FancyJumpsUnrestrictOption;
 
 u8 currentJump = 0;
 
 FloorProperty realPrevFloorProperty = FLOOR_PROPERTY_0;
 
+Player *player;
+
+PlayState *playState;
+
+FancyJumpsSelectOption selectionMethod;
+
 u8 getNextJump() {
     u8 result = 0;
-    FancyJumpsSelectOption selectionMethod = recomp_get_config_u32("jump_selection_method");
+
     switch (selectionMethod) {
     case MOD_OPT_CYCLE:
         result = currentJump % 3;
@@ -45,16 +51,12 @@ u8 getNextJump() {
     return result;
 }
 
-Player *player;
-PlayState *playState;
-
 RECOMP_HOOK("func_808373F8")
-void replaceFloorProperty(PlayState *play, Player *this, u16 sfxId) {
+void pre_OnStartJump(PlayState *play, Player *this, u16 sfxId) {
     player = this;
     playState = play;
     realPrevFloorProperty = sPrevFloorProperty;
-
-    FancyJumpsSelectOption selectionMethod = recomp_get_config_u32("jump_selection_method");
+    selectionMethod = recomp_get_config_u32("jump_selection_method");
 
     if (selectionMethod == MOD_OPT_DISABLED) {
         sPrevFloorProperty = FLOOR_PROPERTY_0;
@@ -88,9 +90,17 @@ void replaceFloorProperty(PlayState *play, Player *this, u16 sfxId) {
     }
 }
 
+bool isDoingFancyJump(Player *p) {
+    p->skelAnime.animation == &gPlayerAnim_link_normal_newside_jump_20f ||
+    p->skelAnime.animation == &gPlayerAnim_link_normal_newroll_jump_20f;
+}
+
 RECOMP_HOOK_RETURN("func_808373F8")
-void restoreFloorProperty() {
+void post_OnStartJump() {
     sPrevFloorProperty = realPrevFloorProperty;
+    if (isDoingFancyJump(player) && recomp_get_config_u32("unrestrict_fancy") == MOD_OPT_UNRESTRICT) {
+        player->stateFlags2 &= ~PLAYER_STATE2_80000;
+    }
 }
 
 bool shouldRollAfterJump(Player *this) {
@@ -100,16 +110,12 @@ bool shouldRollAfterJump(Player *this) {
 }
 
 RECOMP_HOOK("func_80837134")
-void onJumpEnd(PlayState *play, Player *this) {
-
-    if (recomp_get_config_u32("allow_roll_after_fancy_jump") == MOD_OPT_ALWAYS_ALLOW_ROLL) {
-        if (this->transformation != PLAYER_FORM_DEKU) {
-            LinkAnimationHeader *animation = this->skelAnime.animation;
-            if (animation == &gPlayerAnim_link_normal_newside_jump_20f || animation == &gPlayerAnim_link_normal_newroll_jump_20f) {
-                if (shouldRollAfterJump(this)) {
-                    player->stateFlags2 &= ~PLAYER_STATE2_80000;
-                }
-            }
+void pre_OnJumpEnd(PlayState *play, Player *this) {
+    if (isDoingFancyJump(this) && recomp_get_config_u32("unrestrict_fancy") == MOD_OPT_UNRESTRICT) {
+        if (shouldRollAfterJump(this)) {
+            player->stateFlags2 &= ~PLAYER_STATE2_80000;
+        } else {
+            player->stateFlags2 |= PLAYER_STATE2_80000;
         }
     }
 }

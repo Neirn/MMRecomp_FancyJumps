@@ -21,7 +21,7 @@ They can be made to play more frequently by either being cycled between or by pl
 
 They can also be disabled entirely, including the vanilla locations where they appear.
 
-As a small quality of life feature, you can enable rolling upon landing to mitigate damage during these special jumps. This is OFF by default, which matches vanilla behavior.
+You can also enable normal jump functionality during fancy jumps, allowing Link to jump slash, roll on landing, etc. out of these special jumps.
 
 For more details, see https://github.com/Neirn/MMRecomp_FancyJumps"""
 
@@ -82,12 +82,12 @@ options = [ "Vanilla", "Cycle", "Random", "Disabled" ]
 default = "Cycle"
 
 [[manifest.config_options]]
-id = "allow_roll_after_fancy_jump"
-name = "Allow Roll"
+id = "unrestrict_fancy"
+name = "Unrestrict Actions"
 description = """\
-On: Allow Link to roll out of a roll jump or side flip.
+On: Link can roll, jumpslash, etc. during a fancy jump
 
-Off: Link can only roll out of his normal jump. (Vanilla behavior)"""
+Off: Vanilla behavior"""
 type = "Enum"
-options = [ "On", "Off" ]
+options = [ "Off", "On" ]
 default = "Off"
