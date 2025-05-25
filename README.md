@@ -1,8 +1,11 @@
 # Majora's Mask: Recompiled Mod Template
 
-This is an example mod for Majora's Mask: Recompiled that can be used as a template for creating mods. It has a basic build system, headers, sample code, and a mod config toml.
+![Slide Hopping](https://files.catbox.moe/8g3a9m.gif)  
+![Cancel into Jump Slash](https://files.catbox.moe/psruii.gif)
 
-Example code for using the recompui API to build ingame UI can be found in the `ui-example` branch.
+This is a mod for Majora's Mask: Recompiled that allows Link to use his fancier jumping animations more often and adds some optional quality of
+life improvements to them, like letting him jump slash out of them and fixing the visual oddity that occurs when doing a fancy jump while holding
+an actor.
 
 ### Writing mods
 See [this document](https://hackmd.io/fMDiGEJ9TBSjomuZZOgzNg) for an explanation of the modding framework, including how to write function patches and perform interop between different mods.
