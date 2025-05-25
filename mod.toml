@@ -70,13 +70,13 @@ additional_files = [ "thumb.png" ]
 id = "jump_selection_method"
 name = "Jump Selection Method"
 description = """\
-Vanilla: Use default game behavior
+Vanilla: Link will only fancy jump where he normally does
 
 Cycle: Cycle jump animation in the order Normal -> Roll -> Side Flip
 
 Random: Choose a jumping animation at random
 
-Disabled: Disable fancy jumping entirely"""
+Disabled: Link will never fancy jump"""
 type = "Enum"
 options = [ "Vanilla", "Cycle", "Random", "Disabled" ]
 default = "Cycle"
